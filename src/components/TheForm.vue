@@ -47,6 +47,9 @@
         <label for="how-other">Other</label>
       </div>
     </div>
+    <div class="form-control">
+      <rating-control v-model="rating"></rating-control>
+    </div>
         <div class="form-control">
       <h2>Single check box</h2>
       <div>
@@ -61,7 +64,11 @@
 </template>
 
 <script>
+import RatingControl from "./RatingControl.vue"
 export default {
+  components: {
+    RatingControl,
+  },
   data() {
     return {
       userName: '',
@@ -70,12 +77,14 @@ export default {
       interest: [],
       how: null,
       confirm: false,
-      userNameValidity: 'pending'
+      userNameValidity: 'pending',
+      rating: null
     }
   },
   methods: {
     submitForm() {
-      
+      console.log(this.rating)
+      this.rating = null
     },
     validateInput() {
       if (this.userName === '') {
